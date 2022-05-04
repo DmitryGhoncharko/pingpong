@@ -3,17 +3,49 @@ package pingpong;
 
 public class Ball {
     private final int speed;
+    private final int height;
+    private final int width;
+    private  int vectorX;
+    private  int vectorY;
     private int x;
     private int y;
-    private int width;
-    private int height;
 
-    public Ball(int speed, int x, int y, int width, int height) {
+    public Ball(int speed, int x, int y, int width, int height, int vectorX, int vectorY) {
         this.speed = speed;
+        this.height = height;
+        this.width = width;
+        this.vectorX = vectorX;
+        this.vectorY = vectorY;
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getVectorX() {
+        return vectorX;
+    }
+
+    public void setVectorX(int vectorX) {
+        this.vectorX = vectorX;
+    }
+
+    public int getVectorY() {
+        return vectorY;
+    }
+
+    public void setVectorY(int vectorY) {
+        this.vectorY = vectorY;
     }
 
     public int getX() {
@@ -32,26 +64,6 @@ public class Ball {
         this.y = y;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,31 +71,37 @@ public class Ball {
 
         Ball ball = (Ball) o;
 
-        if (x != ball.x) return false;
-        if (y != ball.y) return false;
-        if (width != ball.width) return false;
+        if (speed != ball.speed) return false;
         if (height != ball.height) return false;
-        return speed == ball.speed;
+        if (width != ball.width) return false;
+        if (vectorX != ball.vectorX) return false;
+        if (vectorY != ball.vectorY) return false;
+        if (x != ball.x) return false;
+        return y == ball.y;
     }
 
     @Override
     public int hashCode() {
-        int result = x;
-        result = 31 * result + y;
-        result = 31 * result + width;
+        int result = speed;
         result = 31 * result + height;
-        result = 31 * result + speed;
+        result = 31 * result + width;
+        result = 31 * result + vectorX;
+        result = 31 * result + vectorY;
+        result = 31 * result + x;
+        result = 31 * result + y;
         return result;
     }
 
     @Override
     public String toString() {
         return "Ball{" +
-                "x=" + x +
-                ", y=" + y +
-                ", width=" + width +
+                "speed=" + speed +
                 ", height=" + height +
-                ", speed=" + speed +
+                ", width=" + width +
+                ", vectorX=" + vectorX +
+                ", vectorY=" + vectorY +
+                ", x=" + x +
+                ", y=" + y +
                 '}';
     }
 }

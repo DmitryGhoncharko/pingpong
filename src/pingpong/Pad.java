@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class Pad  {
     private final int speed;
+    private final int width;
+    private final int height;
     private int x;
     private int y;
-    private int width;
-    private int height;
 
     public Pad(int speed, int x, int y, int width, int height) {
         this.speed = speed;
@@ -16,6 +16,18 @@ public class Pad  {
         this.y = y;
         this.width = width;
         this.height = height;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public int getX() {
@@ -34,26 +46,6 @@ public class Pad  {
         this.y = y;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,28 +53,31 @@ public class Pad  {
 
         Pad pad = (Pad) o;
 
-        if (x != pad.x) return false;
-        if (y != pad.y) return false;
+        if (speed != pad.speed) return false;
         if (width != pad.width) return false;
-        return height == pad.height;
+        if (height != pad.height) return false;
+        if (x != pad.x) return false;
+        return y == pad.y;
     }
 
     @Override
     public int hashCode() {
-        int result = x;
-        result = 31 * result + y;
+        int result = speed;
         result = 31 * result + width;
         result = 31 * result + height;
+        result = 31 * result + x;
+        result = 31 * result + y;
         return result;
     }
 
     @Override
     public String toString() {
         return "Pad{" +
-                "x=" + x +
-                ", y=" + y +
+                "speed=" + speed +
                 ", width=" + width +
                 ", height=" + height +
+                ", x=" + x +
+                ", y=" + y +
                 '}';
     }
 }
