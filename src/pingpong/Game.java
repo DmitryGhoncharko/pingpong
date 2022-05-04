@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Game extends JPanel implements KeyListener, ActionListener {
     private static final Set<Integer> KEYS = new HashSet<>(4);
-    private final Timer timer = new Timer(5, this);
+    private final Timer timer = new Timer(1000/30, this);
     private final GameField gameField;
     private final JFrame jFrame;
     private boolean gameIsStart = false;
